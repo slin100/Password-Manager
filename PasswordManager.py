@@ -73,11 +73,9 @@ while True:
         if Username == "skip" or Username == "":
             Username = ""
         else: Username = "|Username:" + Username + "|"
-        Mail = input("Wie lautet die E-Mail? 'mail' ist der Standart: ")
+        Mail = input("Wie lautet die E-Mail?")
         if Mail == "skip" or Mail == "":
             Mail = ""
-        elif Mail == "mail":
-            Mail = "|E-Mail:albers1113@gmail.com|"
         else: Mail = "|E-Mail : " + Mail + "|"
         Password = input("Wie lautet das Password? 'neu' generiert ein neues: ")
         if Password == "skip" or Password == "":
@@ -91,13 +89,8 @@ while True:
             Date = ""
         else: Date = "|Data:" + Date + "|"
         with open("Test_Password", "a") as f:
-            passw =  NameOfProgramm + Username + Mail + Password + Date
+            passw =  NameOfProgramm +Password + Name + Username + Mail + Date
             cipher = str(otp_encrypt(passw, MainHash).decode())
-            # print(passw)
-            # print("========================================")
-            # print(otp_encrypt(passw, MainHash))
-            # print("========================================")
-            # print(otp_encrypt(passw, MainHash).decode())
             f.write(cipher.replace("\n","")+ "\n")
 
     elif action == "2":
@@ -111,7 +104,6 @@ while True:
             f = f.readlines()
             for i in range(len(f)):
                 cipher = f[i]
-                # print(cipher)
                 print(opt_decrypt(cipher, MainHash))
     
     elif action == "3":
